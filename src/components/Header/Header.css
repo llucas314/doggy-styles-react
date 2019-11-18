@@ -1,1 +1,28 @@
-/* No CSS *//*# sourceMappingURL=Header.css.map */
+.header {
+  width: 100vw;
+  height: 10vh;
+  background-color: #5cdb95;
+  color: #05386b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .logo-wrap {
+  margin: 0 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .logo-wrap img {
+  width: 2em;
+  margin: 0 1vw;
+}
+/*# sourceMappingURL=Header.css.map */
