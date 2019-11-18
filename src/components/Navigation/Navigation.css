@@ -1,0 +1,21 @@
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navigation ul {
+  margin: 0 5vw 0 0;
+}
+
+.navigation ul .nav-li {
+  margin: 0.5em;
+  color: #05386b;
+}
+/*# sourceMappingURL=Navigation.css.map */

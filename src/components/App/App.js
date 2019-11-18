@@ -5,9 +5,9 @@ import Header from "../Header/Header";
 
 function App() {
   return (
-    <Route>
-      <Route path="/" component={Header}></Route>
-    </Route>
+    <Switch>
+      <Route path="/" render={() => <Header nav={true} />}></Route>
+    </Switch>
   );
 }
 
