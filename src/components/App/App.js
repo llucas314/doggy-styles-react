@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import Header from "../Header/Header";
+import Login from "../Login/Login";
 
 function App() {
   return (
     <Switch>
-      <Route path="/" render={() => <Header nav={true} />}></Route>
+      <Route path="/" component={Login}></Route>
     </Switch>
   );
 }
