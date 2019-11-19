@@ -1,1 +1,53 @@
-/* No CSS *//*# sourceMappingURL=Login.css.map */
+.login {
+  height: 100vh;
+  overflow: hidden;
+  background-color: #379683;
+}
+
+.login main {
+  height: 90vh;
+  background-image: url("../../images/dog_run.jpg");
+  background-color: #02020257;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 10vw;
+}
+
+.login main img {
+  width: 20vw;
+  -webkit-transform: translateY(30vh);
+          transform: translateY(30vh);
+}
+
+.login main .text-wrap {
+  -webkit-transform: rotateY(180deg) translateY(40px);
+          transform: rotateY(180deg) translateY(40px);
+  text-align: center;
+  color: #edf5e1;
+  width: 40vw;
+}
+
+.login main .text-wrap h1 {
+  font-size: 4em;
+  font-weight: 700;
+  border-bottom: 5px solid #05386b;
+  text-transform: uppercase;
+}
+
+.login main .text-wrap h3 {
+  font-size: 1.6em;
+}
+/*# sourceMappingURL=Login.css.map */
