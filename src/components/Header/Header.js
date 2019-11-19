@@ -11,7 +11,7 @@ function Header(props) {
         <img src={logo} alt="Logo" />
         <h2>Doggy Styles</h2>
       </Link>
-      {props.nav ? <Navigation /> : ""}
+      <Navigation />
     </div>
   );
 }

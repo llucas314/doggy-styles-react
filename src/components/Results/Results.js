@@ -32,7 +32,7 @@ export default class Results extends Component {
           <div className="breeds">
             <Link
               to={{
-                pathname: `/breeds/Poodle`,
+                pathname: `/breeds/Poodle%20(Toy)`,
                 state: { breeds: this.state.breeds }
               }}
               className="breed"

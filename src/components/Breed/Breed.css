@@ -1,1 +1,51 @@
-/* No CSS *//*# sourceMappingURL=Breed.css.map */
+.breed-page {
+  height: 100vh;
+}
+
+.breed-page main {
+  height: 85vh;
+  background-color: #edf5e1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #05386b;
+}
+
+.breed-page main img {
+  width: 20vw;
+  height: 20vw;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100em;
+}
+
+.breed-page main h3 {
+  font-size: 1.2em;
+}
+
+.breed-page main .link-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.breed-page main .link-wrap .breed-link {
+  margin: 0 2vw;
+}
+/*# sourceMappingURL=Breed.css.map */

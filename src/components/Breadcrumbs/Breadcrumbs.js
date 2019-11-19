@@ -9,7 +9,7 @@ function Breadcrumbs() {
           <i className="fas fa-paw"></i>
         </Link>
       </div>
-      <Link to="/" className="home-link">
+      <Link to="/search" className="home-link">
         {" "}
         > <span> Search</span>
       </Link>

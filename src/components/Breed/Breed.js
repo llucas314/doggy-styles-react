@@ -16,6 +16,7 @@ export default class Breed extends Component {
     };
   }
   componentDidMount() {
+    console.log("component did mount");
     this.state.breeds.forEach(breed => {
       if (breed.name === this.props.match.params.id) {
         this.setState({ breeds: breed });
@@ -32,16 +33,26 @@ export default class Breed extends Component {
 
   render() {
     return (
-      <div>
+      <div className="breed-page">
         <Header nav={true} />
         <Breadcrumbs />
         <main>
           <h1>{this.state.breeds.name}</h1>
           <img src={this.state.dogBreed.url} alt={this.state.breeds.name} />
           <h3>Temperament: {this.state.breeds.temperament}</h3>
-          <Link to={`/search/results/${this.state.breeds.name}`}>
-            See Dogs With Similar Styles
-          </Link>
+          <div className="link-wrap">
+            <Link to="/search" className="breed-link">
+              Back to Search
+            </Link>{" "}
+            |{" "}
+            <Link
+              to={`/search/results/${this.state.breeds.name}`}
+              className="breed-link"
+            >
+              {" "}
+              See Dogs With Similar Styles
+            </Link>
+          </div>
         </main>
       </div>
     );
