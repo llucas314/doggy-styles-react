@@ -9,7 +9,7 @@ function Navigation() {
         <Link className="nav-li" to="/">
           Home
         </Link>
-        <Link className="nav-li" to="/">
+        <Link className="nav-li" to="/search">
           Search
         </Link>
         <Link className="nav-li" to="/">
