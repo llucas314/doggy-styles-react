@@ -35,10 +35,6 @@ export default class Search extends Component {
               <option value="boxer">Boxer</option>
               <option value="chihuahua">Chihuahua</option>
             </select>
-
-            {/* <button type="submit">
-              <i class="fas fa-dog"></i>
-            </button> */}
             <Link to={`/search/results/${this.state.value}`}>
               <i class="fas fa-dog"></i>
             </Link>
