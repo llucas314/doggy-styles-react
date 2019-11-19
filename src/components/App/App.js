@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "../Login/Login";
 import Search from "../Search/Search";
 import Results from "../Results/Results";
+import Breed from "../Breed/Breed";
 
 function App() {
   return (
@@ -14,10 +15,7 @@ function App() {
         path="/search/results/:breed"
         render={props => <Results {...props} />}
       ></Route>
-      <Route
-        path="/breeds/:id"
-        render={props => <Results {...props} />}
-      ></Route>
+      <Route path="/breeds/:id" render={props => <Breed {...props} />}></Route>
     </Switch>
   );
 }

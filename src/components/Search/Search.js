@@ -53,7 +53,12 @@ export default class Search extends Component {
                   <i class="fas fa-dog"></i>
                 </Link>
               ) : (
-                <Link to={`/search/results/${this.state.value}`}>
+                <Link
+                  to={{
+                    pathname: `/breeds/${this.state.value}`,
+                    state: { breeds: this.state.breeds }
+                  }}
+                >
                   <i class="fas fa-dog"></i>
                 </Link>
               )}

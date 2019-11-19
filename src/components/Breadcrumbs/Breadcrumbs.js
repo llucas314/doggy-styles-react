@@ -6,7 +6,7 @@ function Breadcrumbs() {
     <div className="breadcrumbs">
       <div className="home-wrap">
         <Link to="/" className="home-link">
-          <i class="fas fa-paw"></i>
+          <i className="fas fa-paw"></i>
         </Link>
       </div>
       <Link to="/" className="home-link">
