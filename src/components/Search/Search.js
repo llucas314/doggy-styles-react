@@ -34,7 +34,7 @@ export default class Search extends Component {
   render() {
     return (
       <div className="search">
-        <Header nav={true} />
+        <Header login={true} />
         <Breadcrumbs />
         {this.state.isLoaded ? (
           <main>

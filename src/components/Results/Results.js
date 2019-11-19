@@ -25,7 +25,7 @@ export default class Results extends Component {
   render() {
     return (
       <div className="results">
-        <Header nav={true} />
+        <Header login={true} />
         <Breadcrumbs />
         <main>
           <h1>Doggy styles similar to {this.props.match.params.breed}s</h1>

@@ -34,7 +34,7 @@ export default class Breed extends Component {
   render() {
     return (
       <div className="breed-page">
-        <Header nav={true} />
+        <Header login={true} />
         <Breadcrumbs />
         <main>
           <h1>{this.state.breeds.name}</h1>
