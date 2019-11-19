@@ -1,8 +1,10 @@
 .search {
   height: 100vh;
+  background-color: #edf5e1;
 }
 
 .search main {
+  border-top: 5px solid #05386b;
   height: 85vh;
   display: -webkit-box;
   display: -ms-flexbox;
