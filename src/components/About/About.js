@@ -41,12 +41,40 @@ export default class About extends Component {
     this.modalDelete = this.modalDelete.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleDogs = this.toggleDogs.bind(this);
+    this.handleDog = this.handleDog.bind(this);
+    this.handleEnergy = this.handleEnergy.bind(this);
   }
   handleChange = e => {
-    console.dir(e.target);
     this.setState({ [e.target.name]: e.target.value });
   };
-
+  handleDog = e => {
+    for (let i = 0; i < this.state.breeds.length; i++) {
+      console.log(e.target.value);
+      if (this.state.breeds[i].name === e.target.value) {
+        let specificBreed = this.state.breedValue[0];
+        console.log(specificBreed);
+        specificBreed.name = e.target.value;
+        specificBreed.temperament = this.state.breeds[i].temperament;
+        this.setState({
+          breedValue: [specificBreed]
+        });
+      }
+    }
+  };
+  handleEnergy = e => {
+    for (let i = 0; i < this.state.energy_levels.length; i++) {
+      console.log(e.target.value);
+      if (this.state.energy_levels[i].level === parseInt(e.target.value)) {
+        let specificEnergy = this.state.energy_level[0];
+        console.log(specificEnergy);
+        specificEnergy.level = e.target.value;
+        specificEnergy.description = this.state.energy_levels[i].description;
+        this.setState({
+          energy_level: [specificEnergy]
+        });
+      }
+    }
+  };
   updatePassword = e => {
     e.preventDefault();
     const url = `https://doggystyle-api.herokuapp.com/users/update/${this.state.user._id}`;
@@ -157,29 +185,26 @@ export default class About extends Component {
                       placeholder="Dog's Age"
                       onChange={this.handleChange}
                     />{" "}
-                    <select
-                      name="energy_level"
-                      value={this.state.energy_level}
-                      onChange={this.handleChange}
-                    >
+                    <select name="energy_level" onChange={this.handleEnergy}>
                       <option>Choose your dog's energy level</option>
                       {this.state.energy_levels.map(energy_level => (
-                        <option key={energy_level.level} value={energy_level}>
+                        <option
+                          key={energy_level.level}
+                          value={energy_level.level}
+                        >
                           {energy_level.description} ({energy_level.level})
                         </option>
                       ))}
                     </select>
-                    <select
-                      name="breedValue"
-                      value={this.state.breedValue}
-                      onChange={this.handleChange}
-                    >
+                    <select name="breedValue" onChange={this.handleDog}>
                       <option>Choose a breed</option>
-                      {this.state.breeds.map(breed => (
-                        <option key={breed._id} value={breed}>
-                          {breed.name}
-                        </option>
-                      ))}
+                      {this.state.breeds.map(breed => {
+                        return (
+                          <option key={breed._id} value={breed.name}>
+                            {breed.name}
+                          </option>
+                        );
+                      })}
                     </select>
                   </form>
                 ) : (
