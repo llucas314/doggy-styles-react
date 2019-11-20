@@ -13,19 +13,24 @@ export default class About extends Component {
       hidden: true,
       password: "",
       confirm: "",
-      pwChanged: false
+      pwChanged: false,
+      dogs: [{}],
+      modal: false,
+      delete: false,
+      message: ""
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
     this.toggleShow = this.toggleShow.bind(this);
+    this.modalDelete = this.modalDelete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   handleChange = e => {
     console.dir(e.target);
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = e => {
+  updatePassword = e => {
     e.preventDefault();
     const url =
       "https://cors-anywhere.herokuapp.com/localhost:8080/users/create";
@@ -40,21 +45,35 @@ export default class About extends Component {
         .then(this.setState({ pwChanged: true }))
         .catch(err => console.log(err));
     } else {
-      this.setState({ message: "Passwords do not match" });
+      this.setState({ message: "- Passwords do not match" });
     }
   };
   toggleShow = e => {
     e.preventDefault();
     this.setState({ hidden: !this.state.hidden });
   };
-  updatePassword = e => {
+
+  modalDelete = e => {
     e.preventDefault();
+    this.setState({ modal: true });
   };
+  handleDelete = e => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:8080/users/delete/5dd486419f74e9608dc06134`)
+      .then(res => {
+        this.setState({ user: res.data });
+        this.setState({ dogs: res.data[0].dogs });
+      })
+      .catch(err => console.log(err));
+  };
+
   componentDidMount() {
     axios
       .get(`http://localhost:8080/users/llucas314/123456`)
       .then(res => {
         this.setState({ user: res.data });
+        this.setState({ dogs: res.data[0].dogs });
       })
       .then(this.setState({ isLoaded: true }))
       .catch(err => console.log(err));
@@ -69,8 +88,27 @@ export default class About extends Component {
             <div className="text-wrap">
               <h1>Hello, {this.state.user[0].firstName}</h1>
               <h2>Would you like to update your account?</h2>
+              <h4>Dogs</h4>
+              <ul className="dog-list">
+                {this.state.dogs.map((dog, i) => (
+                  <li key={i} className="dog">
+                    <p>
+                      {dog.petName}
+                      <br />
+                      -Energy Level: {dog.energy_level}
+                      <br />
+                      -Age: {dog.age}
+                      {/* <br />
+                      -Breed :{name} */}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <h4>Add A Dog</h4>
               <h4>
-                {this.state.pwChanged ? "Password Updated" : "Change password"}
+                {this.state.pwChanged
+                  ? "Password Updated"
+                  : `Change password ${this.state.message}`}
               </h4>
               <form onSubmit={this.updatePassword}>
                 <label>
@@ -92,6 +130,19 @@ export default class About extends Component {
                 </label>
                 <input type="submit" value="Submit" />
               </form>
+              <h4>Delete Account</h4>
+              <button onClick={this.modalDelete}>Delete</button>
+              {this.state.modal ? (
+                <div className="delete-modal">
+                  <h3>Are You Sure?</h3>
+                  <button onClick={this.handleDelete}>Yes</button>
+                  <button onClick={() => this.setState({ modal: false })}>
+                    NO
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </main>
         ) : (
