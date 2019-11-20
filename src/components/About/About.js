@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import axios from "axios";
 import "./About.css";
 import Header from "../Header/Header";
+import { stat } from "fs";
 
 export default class About extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class About extends Component {
       deleted: false,
       breeds: [{}],
       petName: "",
-      age: "",
+      age: 0,
       energy_levels: [
         { level: 1, description: "Very Low" },
         { level: 2, description: "Low" },
@@ -33,7 +34,8 @@ export default class About extends Component {
       ],
       energy_level: [{}],
       dogsInput: false,
-      breedValue: [{}]
+      breedValue: [{}],
+      dogMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
@@ -43,9 +45,14 @@ export default class About extends Component {
     this.toggleDogs = this.toggleDogs.bind(this);
     this.handleDog = this.handleDog.bind(this);
     this.handleEnergy = this.handleEnergy.bind(this);
+    this.updateDog = this.updateDog.bind(this);
   }
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    if (e.target.name === "age") {
+      const ageInt = parseInt(e.target.value);
+      console.log(ageInt);
+      this.setState({ age: ageInt });
+    } else this.setState({ [e.target.name]: e.target.value });
   };
   handleDog = e => {
     for (let i = 0; i < this.state.breeds.length; i++) {
@@ -67,7 +74,8 @@ export default class About extends Component {
       if (this.state.energy_levels[i].level === parseInt(e.target.value)) {
         let specificEnergy = this.state.energy_level[0];
         console.log(specificEnergy);
-        specificEnergy.level = e.target.value;
+        const levelInt = parseInt(e.target.value);
+        specificEnergy.level = levelInt;
         specificEnergy.description = this.state.energy_levels[i].description;
         this.setState({
           energy_level: [specificEnergy]
@@ -96,6 +104,24 @@ export default class About extends Component {
     } else {
       this.setState({ message: "- Passwords do not match" });
     }
+  };
+  updateDog = e => {
+    e.preventDefault();
+    const url = `https://doggystyle-api.herokuapp.com/users/${this.state.user._id}/dogs/create`;
+
+    axios
+      .post(url, {
+        breed: this.state.breedValue,
+        petName: this.state.petName,
+        energy_level: this.state.energy_level.level,
+        age: this.state.age
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+
+    this.setState({ dogMessage: "Added Dog" });
   };
   toggleShow = e => {
     e.preventDefault();
@@ -171,8 +197,9 @@ export default class About extends Component {
                   ))}
                 </ul>
                 <button onClick={this.toggleDogs}>Add A Dog</button>
+                <p>{this.state.dogMessage}</p>
                 {this.state.dogsInput ? (
-                  <form>
+                  <form onSubmit={this.updateDog}>
                     <input
                       type="text"
                       name="petName"
@@ -206,6 +233,7 @@ export default class About extends Component {
                         );
                       })}
                     </select>
+                    <input type="submit" value="Add Dog" />
                   </form>
                 ) : (
                   ""
