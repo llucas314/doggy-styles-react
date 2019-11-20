@@ -30,7 +30,8 @@ export default class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const url = "localhost:8080/users/create";
+    const url =
+      "https://cors-anywhere.herokuapp.com/localhost:8080/users/create";
     if (this.state.password === this.state.confirm) {
       axios
         .post(url, {
@@ -55,7 +56,7 @@ export default class SignUp extends Component {
   };
   render() {
     if (this.state.submitted) {
-      return <Redirect to="/" />;
+      return <Redirect to="/about" />;
     }
     return (
       <div className="sign-up">

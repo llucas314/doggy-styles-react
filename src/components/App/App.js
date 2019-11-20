@@ -6,6 +6,7 @@ import Search from "../Search/Search";
 import Results from "../Results/Results";
 import Breed from "../Breed/Breed";
 import SignUp from "../SignUp/SignUp";
+import About from "../About/About";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       ></Route>
       <Route path="/breeds/:id" render={props => <Breed {...props} />}></Route>
       <Route path="/signup" render={props => <SignUp {...props} />}></Route>
+      <Route path="/about" render={props => <About {...props} />}></Route>
     </Switch>
   );
 }
