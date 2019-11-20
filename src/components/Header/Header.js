@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../images/bone.png";
-import "./Header.css";
 import Navigation from "../Navigation/Navigation";
+import HeaderLogo from '../../storybook/HeaderLogo/HeaderLogo';
+import "./Header.css";
 
 function Header(props) {
   return (
     <div className="header">
       <Link to="/" className="logo-wrap">
-        <img src={logo} alt="Logo" />
-        <h2>Doggy Styles</h2>
+        <HeaderLogo />
       </Link>
       <Navigation login={props.login} />
     </div>
