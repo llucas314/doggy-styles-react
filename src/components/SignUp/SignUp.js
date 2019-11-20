@@ -26,7 +26,7 @@ export default class SignUp extends Component {
     this.toggleShow = this.toggleShow.bind(this);
   }
   handleChange = e => {
-    console.dir(e.target);
+    // console.dir(e.target);
     this.setState({ [e.target.name]: e.target.value });
   };
 

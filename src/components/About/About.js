@@ -156,9 +156,12 @@ export default class About extends Component {
       )
       .then(res => {
         const userJson = { ...res.data[0] };
-        this.setState({ user: userJson });
-        this.setState({ dogs: res.data[0].dogs });
-        this.setState({ isLoaded: true });
+        this.setState({
+          user: userJson,
+          dogs: res.data[0].dogs,
+          isLoaded: true
+        });
+        console.log("component did mount");
       })
       .catch(err => console.log(err));
     axios
@@ -168,9 +171,13 @@ export default class About extends Component {
   }
 
   render() {
+    console.log("render", this.state.isLoaded);
+    // console.log(this.state);
     if (this.state.deleted) {
       return <Redirect to="/" />;
-    } else if (this.state.isLoaded) {
+    }
+
+    if (this.state.isLoaded) {
       return (
         <div className="about">
           <Header login={true} />
@@ -190,8 +197,8 @@ export default class About extends Component {
                         -Energy Level: {dog.energy_level}
                         <br />
                         -Age: {dog.age}
-                        {/* <br />
-                    -Breed :{name} */}
+                        <br />
+                        -Breed :{dog.breed[0].name}
                       </p>
                     </li>
                   ))}
