@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 import Login from "../Login/Login";
 import Search from "../Search/Search";
@@ -13,6 +13,8 @@ function App() {
     <Switch>
       <Route path="/" exact component={Login}></Route>
       <Route path="/search" exact component={Search}></Route>
+      <Redirect from="/breeds" exact to="/search" />>
+      <Redirect from="/results" exact to="/search" />>
       <Route
         path="/search/results/:breed"
         render={props => <Results {...props} />}

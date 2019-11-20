@@ -30,8 +30,7 @@ export default class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const url =
-      "https://cors-anywhere.herokuapp.com/localhost:8080/users/create";
+    const url = " https://doggystyle-api.herokuapp.com/users/create";
     if (this.state.password === this.state.confirm) {
       axios
         .post(url, {
@@ -64,56 +63,54 @@ export default class SignUp extends Component {
         <main>
           <div className="text-wrap">
             <h1>Sign Up</h1>
-            <h2>{this.state.message}</h2>
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                First Name:
-                <input
-                  type="text"
-                  name="firstName"
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Last Name:
-                <input
-                  type="text"
-                  name="lastName"
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Email:
-                <input type="text" name="email" onChange={this.handleChange} />
-              </label>
-              <label>
-                Username:
-                <input
-                  type="text"
-                  name="username"
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Password:
-                <input
-                  type={this.state.hidden ? "password" : "text"}
-                  name="password"
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Confirm Password:
-                <input
-                  type={this.state.hidden ? "password" : "text"}
-                  name="confirm"
-                  onChange={this.handleChange}
-                />
-                <button onClick={this.toggleShow}>Show / Hide</button>
-              </label>
-              <input type="submit" value="Submit" />
-            </form>
+            <h4>{this.state.message}</h4>
           </div>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              onChange={this.handleChange}
+            />
+
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              onChange={this.handleChange}
+            />
+
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+
+            <input
+              type="text"
+              name="username"
+              placeholder=" Username"
+              onChange={this.handleChange}
+            />
+
+            <input
+              type={this.state.hidden ? "password" : "text"}
+              name="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+
+            <input
+              type={this.state.hidden ? "password" : "text"}
+              name="confirm"
+              placeholder="Confirm Password"
+              onChange={this.handleChange}
+            />
+            <button onClick={this.toggleShow}>Show / Hide</button>
+
+            <input type="submit" value="Submit" />
+          </form>
         </main>
       </div>
     );

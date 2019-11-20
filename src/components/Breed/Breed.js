@@ -35,7 +35,7 @@ export default class Breed extends Component {
     return (
       <div className="breed-page">
         <Header login={true} />
-        <Breadcrumbs />
+        <Breadcrumbs links={["Search", "Breeds"]} />
         <main>
           <h1>{this.state.breeds.name}</h1>
           <img src={this.state.dogBreed.url} alt={this.state.breeds.name} />
