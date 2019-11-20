@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import axios from "axios";
 import Header from "../Header/Header";
 import "./SignUp.css";
@@ -15,7 +16,8 @@ export default class SignUp extends Component {
       username: "",
       password: "",
       confirm: "",
-      hidden: true
+      hidden: true,
+      submitted: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +43,7 @@ export default class SignUp extends Component {
         .then(res => {
           console.log(res);
         })
-        .then(alert("Successful Sign Up"))
+        .then(this.setState({ submitted: true }))
         .catch(err => console.log(err));
     } else {
       this.setState({ message: "Passwords do not match" });
@@ -52,6 +54,9 @@ export default class SignUp extends Component {
     this.setState({ hidden: !this.state.hidden });
   };
   render() {
+    if (this.state.submitted) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="sign-up">
         <Header login={false} />
