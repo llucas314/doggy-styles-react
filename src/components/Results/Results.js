@@ -17,7 +17,7 @@ export default class Results extends Component {
   }
   componentDidMount() {
     axios
-      .get(`http://localhost:8080/breeds`)
+      .get(`https://doggystyle-api.herokuapp.com/breeds`)
       .then(res => this.setState({ breeds: res.data }))
       .then(this.setState({ isLoaded: true }))
       .catch(err => console.log(err));
@@ -26,7 +26,7 @@ export default class Results extends Component {
     return (
       <div className="results">
         <Header login={true} />
-        <Breadcrumbs />
+        <Breadcrumbs links={["Search", "Breeds", "Results"]} />
         <main>
           <h1>Doggy styles similar to {this.props.match.params.breed}s</h1>
           <div className="breeds">

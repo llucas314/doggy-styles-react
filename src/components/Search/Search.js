@@ -26,7 +26,7 @@ export default class Search extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/breeds")
+      .get("https://doggystyle-api.herokuapp.com/breeds")
       .then(res => this.setState({ breeds: res.data }))
       .then(this.setState({ isLoaded: true }))
       .catch(err => console.log(err));
@@ -35,7 +35,7 @@ export default class Search extends Component {
     return (
       <div className="search">
         <Header login={true} />
-        <Breadcrumbs />
+        <Breadcrumbs links={["Search"]} />
         {this.state.isLoaded ? (
           <main>
             <h1>Find your dog's breed</h1>
