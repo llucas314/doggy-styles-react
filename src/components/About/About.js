@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import axios from "axios";
 import "./About.css";
 import Header from "../Header/Header";
@@ -17,7 +18,8 @@ export default class About extends Component {
       dogs: [{}],
       modal: false,
       delete: false,
-      message: ""
+      message: "",
+      deleted: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
@@ -64,8 +66,8 @@ export default class About extends Component {
         `https://doggystyle-api.herokuapp.com/users/delete/${this.state.user[0]._id}`
       )
       .then(res => {
-        this.setState({ user: res.data });
-        this.setState({ dogs: res.data[0].dogs });
+        console.log(res);
+        this.setState({ deleted: true });
       })
       .catch(err => console.log(err));
   };
@@ -84,6 +86,10 @@ export default class About extends Component {
   }
 
   render() {
+    if (this.state.deleted) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="about">
         <Header login={true} />
