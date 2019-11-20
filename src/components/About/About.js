@@ -60,7 +60,9 @@ export default class About extends Component {
   handleDelete = e => {
     e.preventDefault();
     axios
-      .delete(`http://localhost:8080/users/delete/5dd486419f74e9608dc06134`)
+      .delete(
+        `https://doggystyle-api.herokuapp.com/users/delete/${this.state.user[0]._id}`
+      )
       .then(res => {
         this.setState({ user: res.data });
         this.setState({ dogs: res.data[0].dogs });
@@ -70,7 +72,9 @@ export default class About extends Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:8080/users/llucas314/123456`)
+      .get(
+        `https://doggystyle-api.herokuapp.com/users/${this.props.location.state.username}/${this.props.location.state.password}`
+      )
       .then(res => {
         this.setState({ user: res.data });
         this.setState({ dogs: res.data[0].dogs });

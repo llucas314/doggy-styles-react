@@ -55,7 +55,18 @@ export default class SignUp extends Component {
   };
   render() {
     if (this.state.submitted) {
-      return <Redirect to="/about" />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/about",
+
+            state: {
+              username: this.state.username,
+              password: this.state.password
+            }
+          }}
+        />
+      );
     }
     return (
       <div className="sign-up">
