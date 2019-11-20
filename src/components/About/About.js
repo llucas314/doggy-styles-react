@@ -19,13 +19,28 @@ export default class About extends Component {
       modal: false,
       delete: false,
       message: "",
-      deleted: false
+      deleted: false,
+      breeds: [{}],
+      petName: "",
+      age: "",
+      energy_levels: [
+        { level: 1, description: "Very Low" },
+        { level: 2, description: "Low" },
+        { level: 3, description: "Middle of the Road" },
+        { level: 4, description: "High" },
+        { level: 5, description: "Very High" },
+        { level: 6, description: "Crazy" }
+      ],
+      energy_level: [{}],
+      dogsInput: false,
+      breedValue: [{}]
     };
     this.handleChange = this.handleChange.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
     this.toggleShow = this.toggleShow.bind(this);
     this.modalDelete = this.modalDelete.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleDogs = this.toggleDogs.bind(this);
   }
   handleChange = e => {
     console.dir(e.target);
@@ -58,6 +73,10 @@ export default class About extends Component {
     e.preventDefault();
     this.setState({ hidden: !this.state.hidden });
   };
+  toggleDogs = e => {
+    e.preventDefault();
+    this.setState({ dogsInput: !this.state.dogsInput });
+  };
 
   modalDelete = e => {
     e.preventDefault();
@@ -88,6 +107,10 @@ export default class About extends Component {
         this.setState({ isLoaded: true });
       })
       .catch(err => console.log(err));
+    axios
+      .get("https://doggystyle-api.herokuapp.com/breeds")
+      .then(res => this.setState({ breeds: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -102,6 +125,7 @@ export default class About extends Component {
               <div className="text-wrap">
                 <h1>Hello, {this.state.user.firstName}</h1>
                 <h2>Would you like to update your account?</h2>
+                {/* list of dogs */}
                 <h4>Dogs</h4>
                 <ul className="dog-list">
                   {this.state.dogs.map((dog, i) => (
@@ -118,7 +142,49 @@ export default class About extends Component {
                     </li>
                   ))}
                 </ul>
-                <h4>Add A Dog</h4>
+                <button onClick={this.toggleDogs}>Add A Dog</button>
+                {this.state.dogsInput ? (
+                  <form>
+                    <input
+                      type="text"
+                      name="petName"
+                      placeholder="Dog's Name"
+                      onChange={this.handleChange}
+                    />{" "}
+                    <input
+                      type="text"
+                      name="age"
+                      placeholder="Dog's Age"
+                      onChange={this.handleChange}
+                    />{" "}
+                    <select
+                      name="energy_level"
+                      value={this.state.energy_level}
+                      onChange={this.handleChange}
+                    >
+                      <option>Choose your dog's energy level</option>
+                      {this.state.energy_levels.map(energy_level => (
+                        <option key={energy_level.level} value={energy_level}>
+                          {energy_level.description} ({energy_level.level})
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      name="breedValue"
+                      value={this.state.breedValue}
+                      onChange={this.handleChange}
+                    >
+                      <option>Choose a breed</option>
+                      {this.state.breeds.map(breed => (
+                        <option key={breed._id} value={breed}>
+                          {breed.name}
+                        </option>
+                      ))}
+                    </select>
+                  </form>
+                ) : (
+                  ""
+                )}
                 <h4>
                   {this.state.pwChanged
                     ? "Password Updated"
