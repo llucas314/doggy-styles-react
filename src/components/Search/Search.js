@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./Search.css";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import Dog from '../../storybook/Dog/Dog';
+import "./Search.css";
 
 export default class Search extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ export default class Search extends Component {
               </select>
               {this.state.value === "" ? (
                 <Link to={`/search`}>
-                  <i class="fas fa-dog"></i>
+                  <Dog />
                 </Link>
               ) : (
                 <Link
@@ -59,7 +60,7 @@ export default class Search extends Component {
                     state: { breeds: this.state.breeds }
                   }}
                 >
-                  <i class="fas fa-dog"></i>
+                  <Dog />
                 </Link>
               )}
             </form>

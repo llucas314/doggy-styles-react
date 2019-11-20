@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from "react-router";
 import axios from "axios";
 import Header from "../Header/Header";
+import SubmitInput from '../../storybook/Input/SubmitInput';
+import TextInput from '../../storybook/Input/TextInput';
 import "./SignUp.css";
 
 export default class SignUp extends Component {
@@ -77,50 +79,13 @@ export default class SignUp extends Component {
             <h4>{this.state.message}</h4>
           </div>
           <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              onChange={this.handleChange}
-            />
-
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              onChange={this.handleChange}
-            />
-
-            <input
-              type="text"
-              name="email"
-              placeholder="Email"
-              onChange={this.handleChange}
-            />
-
-            <input
-              type="text"
-              name="username"
-              placeholder=" Username"
-              onChange={this.handleChange}
-            />
-
-            <input
-              type={this.state.hidden ? "password" : "text"}
-              name="password"
-              placeholder="Password"
-              onChange={this.handleChange}
-            />
-
-            <input
-              type={this.state.hidden ? "password" : "text"}
-              name="confirm"
-              placeholder="Confirm Password"
-              onChange={this.handleChange}
-            />
+            <TextInput name={'firstName'} placeholder={'First Name'} onChange={this.handleChange} />
+            <TextInput name={'lastName'} placeholder={'Last Name'} onChange={this.handleChange} />
+            <TextInput name={'email'} placeholder={'Email'} onChange={this.handleChange} />
+            <TextInput name={'username'} placeholder={'Username'} onChange={this.handleChange} />
+            <input type={this.state.hidden ? "password" : "text"} name="password" placeholder="Password" onChange={this.handleChange} />
             <button onClick={this.toggleShow}>Show / Hide</button>
-
-            <input type="submit" value="Submit" />
+            <SubmitInput />
           </form>
         </main>
       </div>

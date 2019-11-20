@@ -1,12 +1,14 @@
 import React from "react";
-import "./Breadcrumbs.css";
 import { Link } from "react-router-dom";
+import Paw from '../../storybook/Paw/Paw';
+import "./Breadcrumbs.css";
+
 function Breadcrumbs(props) {
   return (
     <div className="breadcrumbs">
       <div className="home-wrap">
         <Link to="/" className="home-link">
-          <i className="fas fa-paw"></i>
+          <Paw />
         </Link>
       </div>
       {props.links
