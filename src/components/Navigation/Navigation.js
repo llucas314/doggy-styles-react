@@ -19,7 +19,7 @@ function Navigation(props) {
         </ul>
       ) : (
         <ul>
-          <Link className="nav-li" to="/">
+          <Link className="nav-li" to="/signup">
             Sign Up
           </Link>
 
