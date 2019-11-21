@@ -23,7 +23,7 @@ function Navigation(props) {
             Sign Up
           </Link>
 
-          <Link className="nav-li" to="/search">
+          <Link className="nav-li" to="/login">
             Login
           </Link>
         </ul>

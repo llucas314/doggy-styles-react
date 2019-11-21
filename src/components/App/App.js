@@ -8,6 +8,7 @@ import Breed from "../Breed/Breed";
 import SignUp from "../SignUp/SignUp";
 import About from "../Account/Account";
 import Home from "../Home/Home";
+import Login from "../Login/Login";
 export default class App extends Component {
   constructor() {
     super();
@@ -51,6 +52,10 @@ export default class App extends Component {
         <Route
           path="/about"
           render={props => <About {...props} {...this.state} />}
+        ></Route>
+        <Route
+          path="/login"
+          render={props => <Login {...props} {...this.state} />}
         ></Route>
       </Switch>
     );
