@@ -31,7 +31,7 @@ export default class About extends Component {
         { level: 5, description: "Very High" },
         { level: 6, description: "Crazy" }
       ],
-      energy_level: [{}],
+      energy_level: 0,
       dogsInput: false,
       breedValue: [{}],
       dogMessage: ""
@@ -74,10 +74,8 @@ export default class About extends Component {
         let specificEnergy = this.state.energy_level[0];
         console.log(specificEnergy);
         const levelInt = parseInt(e.target.value);
-        specificEnergy.level = levelInt;
-        specificEnergy.description = this.state.energy_levels[i].description;
         this.setState({
-          energy_level: [specificEnergy]
+          energy_level: levelInt
         });
       }
     }
@@ -112,7 +110,7 @@ export default class About extends Component {
       .post(url, {
         breed: this.state.breedValue,
         petName: this.state.petName,
-        energy_level: this.state.energy_level.level,
+        energy_level: this.state.energy_level,
         age: this.state.age
       })
       .then(res => {
