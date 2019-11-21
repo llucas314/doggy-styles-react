@@ -3,8 +3,9 @@ import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import Dog from '../../storybook/Dog/Dog';
+import Dog from "../../storybook/Dog/Dog";
 import "./Search.css";
+import Select from "../Select/Select";
 
 export default class Search extends Component {
   constructor(props) {
@@ -41,14 +42,12 @@ export default class Search extends Component {
           <main>
             <h1>Find your dog's breed</h1>
             <form onSubmit={this.handleSubmit}>
-              <select value={this.state.value} onChange={this.handleChange}>
-                <option value="">Choose a breed</option>
-                {this.state.breeds.map(breed => (
-                  <option key={breed._id} value={breed.name}>
-                    {breed.name}
-                  </option>
-                ))}
-              </select>
+              <Select
+                default={this.state.value}
+                handleChange={this.handleChange}
+                array={this.state.breeds}
+                selectOptions={"Choose a Breed"}
+              />
               {this.state.value === "" ? (
                 <Link to={`/search`}>
                   <Dog />

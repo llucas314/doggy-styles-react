@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import BreedProfile from "../Breed_Profile/BreedProfile";
 
 export default class Breed extends Component {
   constructor(props) {
@@ -37,9 +38,7 @@ export default class Breed extends Component {
         <Header login={true} />
         <Breadcrumbs links={["Search", "Breeds"]} />
         <main>
-          <h1>{this.state.breeds.name}</h1>
-          <img src={this.state.dogBreed.url} alt={this.state.breeds.name} />
-          <h3>Temperament: {this.state.breeds.temperament}</h3>
+          <BreedProfile {...this.state.breeds} url={this.state.dogBreed.url} />
           <div className="link-wrap">
             <Link to="/search" className="breed-link">
               Back to Search
