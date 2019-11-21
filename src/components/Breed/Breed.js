@@ -42,21 +42,28 @@ export default class Breed extends Component {
     );
 
     console.log(currentBreed);
-
+    let tempProps = '';
+    for (let i = 0; i < currentBreed[0].temperament.length; i++) {
+      if (i === currentBreed[0].temperament.length - 1) {
+        tempProps += currentBreed[0].temperament[i];
+      } else {
+        tempProps += currentBreed[0].temperament[i] + ', ';
+      }
+    }
     return (
       <div className="breed-page">
         <Header login={true} />
         <Breadcrumbs links={["Search", "Breeds"]} />
         <main>
-          <BreedProfile {...currentBreed[0]} url={this.state.dogBreed.url} />
+          <BreedProfile {...currentBreed[0]} url={this.state.dogBreed.url} t={tempProps} />
           <div className="link-wrap">
             <Link to="/search" className="breed-link">
               Back to Search
             </Link>{" "}
             |{" "}
             <Link
-              to={`/search/results/${currentBreed.name}`}
-              className="breed-link"
+              to={`/search/results/${currentBreed[0].name}`}
+              className="breed-link" 
             >
               {" "}
               See Dogs With Similar Styles
