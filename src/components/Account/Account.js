@@ -288,11 +288,15 @@ export default class About extends Component {
                 <button onClick={this.modalDelete}>Delete</button>
                 {this.state.modal ? (
                   <div className="delete-modal">
-                    <h3>Are You Sure?</h3>
-                    <button onClick={this.handleDelete}>Yes</button>
-                    <button onClick={() => this.setState({ modal: false })}>
-                      NO
-                    </button>
+                    <div className="modal-wrap">
+                      <h3>Are You Sure?</h3>
+                      <div className="modal-button">
+                        <button onClick={this.handleDelete}>Yes</button>
+                        <button onClick={() => this.setState({ modal: false })}>
+                          NO
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   ""
