@@ -1,10 +1,10 @@
-.login {
+.home {
   height: 100vh;
   overflow: hidden;
   background-color: #379683;
 }
 
-.login main {
+.home main {
   height: 90vh;
   background-image: url("../../images/dog_run.jpg");
   background-color: #02020257;
@@ -26,13 +26,13 @@
   padding: 0 10vw;
 }
 
-.login main img {
+.home main img {
   width: 20vw;
   -webkit-transform: translateY(30vh);
           transform: translateY(30vh);
 }
 
-.login main .text-wrap {
+.home main .text-wrap {
   -webkit-transform: rotateY(180deg) translateY(40px);
           transform: rotateY(180deg) translateY(40px);
   text-align: center;
@@ -40,14 +40,14 @@
   width: 40vw;
 }
 
-.login main .text-wrap h1 {
+.home main .text-wrap h1 {
   font-size: 4em;
   font-weight: 700;
   border-bottom: 5px solid #05386b;
   text-transform: uppercase;
 }
 
-.login main .text-wrap h3 {
+.home main .text-wrap h3 {
   font-size: 1.6em;
 }
-/*# sourceMappingURL=Login.css.map */
+/*# sourceMappingURL=Home.css.map */

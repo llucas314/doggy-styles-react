@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
-import Login from "../Login/Login";
 import Search from "../Search/Search";
 import Results from "../Results/Results";
 import Breed from "../Breed/Breed";
 import SignUp from "../SignUp/SignUp";
-import About from "../About/About";
+import About from "../Account/Account";
+import Home from "../Home/Home";
 
 function App() {
   return (
     <Switch>
-      <Route path="/" exact component={Login}></Route>
+      <Route path="/" exact component={Home}></Route>
       <Route path="/search" exact component={Search}></Route>
       <Redirect from="/breeds" exact to="/search" />>
       <Redirect from="/results" exact to="/search" />>

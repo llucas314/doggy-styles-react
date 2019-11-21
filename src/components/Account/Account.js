@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
 import axios from "axios";
-import "./About.css";
+import "./Account.css";
 import Header from "../Header/Header";
-import { stat } from "fs";
 
 export default class About extends Component {
   constructor(props) {
@@ -179,7 +178,7 @@ export default class About extends Component {
 
     if (this.state.isLoaded) {
       return (
-        <div className="about">
+        <div className="account">
           <Header login={true} />
           {this.state.isLoaded ? (
             <main>

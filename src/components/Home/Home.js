@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "../Header/Header";
-import "./Login.css";
+import "./Home.css";
 
-function Login() {
+function Home() {
   return (
-    <div className="login">
+    <div className="home">
       <Header login={false} />
       <main>
         <div className="text-wrap">
@@ -16,4 +16,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Home;
