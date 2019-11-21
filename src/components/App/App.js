@@ -6,7 +6,7 @@ import Search from "../Search/Search";
 import Results from "../Results/Results";
 import Breed from "../Breed/Breed";
 import SignUp from "../SignUp/SignUp";
-import About from "../Account/Account";
+import Account from "../Account/Account";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 export default class App extends Component {
@@ -20,7 +20,8 @@ export default class App extends Component {
       breedsIds: [],
       username: "",
       password: "",
-      message: ""
+      message: "",
+      loggedIn: false
     };
     this.loginChange = this.loginChange.bind(this);
     this.loginSubmit = this.loginSubmit.bind(this);
@@ -35,8 +36,9 @@ export default class App extends Component {
       .then(res => {
         if (res.data.length === 0) {
           this.setState({ message: "Try Again" });
+          this.setState({ loggedIn: false });
         } else {
-          this.setState({ submitted: true });
+          this.setState({ loggedIn: true });
         }
       });
   };
@@ -89,8 +91,8 @@ export default class App extends Component {
           )}
         ></Route>
         <Route
-          path="/about"
-          render={props => <About {...props} {...this.state} />}
+          path="/account"
+          render={props => <Account {...props} {...this.state} />}
         ></Route>
         <Route
           path="/login"

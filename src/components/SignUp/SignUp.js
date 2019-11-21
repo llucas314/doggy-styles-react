@@ -33,12 +33,12 @@ export default class SignUp extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const url = " https://doggystyle-api.herokuapp.com/users/create";
-    if (this.state.password === this.state.confirm) {
+    if (this.props.password === this.state.confirm) {
       axios
         .post(url, {
           email: this.state.email,
-          username: this.state.username,
-          password: this.state.password,
+          username: this.props.username,
+          password: this.props.password,
           firstName: this.state.firstName,
           lastName: this.state.lastName
         })
@@ -46,6 +46,7 @@ export default class SignUp extends Component {
           console.log(res);
         })
         .then(this.setState({ submitted: true }))
+
         .catch(err => console.log(err));
     } else {
       this.setState({ message: "Passwords do not match" });
@@ -60,7 +61,7 @@ export default class SignUp extends Component {
       return (
         <Redirect
           to={{
-            pathname: "/about",
+            pathname: "/account",
 
             state: {
               username: this.state.username,
@@ -97,14 +98,14 @@ export default class SignUp extends Component {
             <TextInput
               name={"username"}
               placeholder={"Username"}
-              onChange={this.handleChange}
+              onChange={this.props.loginChange}
             />
 
             <input
               type={this.state.hidden ? "password" : "text"}
               name="password"
               placeholder="Password"
-              onChange={this.handleChange}
+              onChange={this.props.loginChange}
             />
             <input
               type={this.state.hidden ? "password" : "text"}

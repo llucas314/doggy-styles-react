@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Account.css";
 import Header from "../Header/Header";
 
-export default class About extends Component {
+export default class Account extends Component {
   constructor(props) {
     super(props);
 
@@ -163,7 +163,7 @@ export default class About extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://doggystyle-api.herokuapp.com/users/${this.props.location.state.username}/${this.props.location.state.password}`
+        `${this.props.baseUrl}/users/${this.props.username}/${this.props.password}`
       )
       .then(res => {
         const userJson = { ...res.data[0] };
@@ -174,10 +174,6 @@ export default class About extends Component {
         });
         console.log("component did mount");
       })
-      .catch(err => console.log(err));
-    axios
-      .get("https://doggystyle-api.herokuapp.com/breeds")
-      .then(res => this.setState({ breeds: res.data }))
       .catch(err => console.log(err));
   }
 
