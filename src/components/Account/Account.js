@@ -45,6 +45,7 @@ export default class About extends Component {
     this.handleDog = this.handleDog.bind(this);
     this.handleEnergy = this.handleEnergy.bind(this);
     this.updateDog = this.updateDog.bind(this);
+    this.deleteDog = this.deleteDog.bind(this);
   }
   handleChange = e => {
     if (e.target.name === "age") {
@@ -120,6 +121,19 @@ export default class About extends Component {
 
     this.setState({ dogMessage: "Added Dog" });
   };
+
+  deleteDog = e => {
+    e.preventDefault();
+    console.log(e.target.value);
+    axios
+      .delete(
+        `https://doggystyle-api.herokuapp.com/users/${this.state.user._id}/dogs/delete/${e.target.value}`
+      )
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  };
   toggleShow = e => {
     e.preventDefault();
     this.setState({ hidden: !this.state.hidden });
@@ -187,7 +201,7 @@ export default class About extends Component {
                 <h4>Dogs</h4>
                 <ul className="dog-list">
                   {this.state.dogs.map((dog, i) => (
-                    <li key={i} className="dog">
+                    <li key={dog._id} className="dog">
                       <p>
                         {dog.petName}
                         <br />
@@ -197,6 +211,9 @@ export default class About extends Component {
                         <br />
                         -Breed :{dog.breed[0].name}
                       </p>
+                      <button onClick={this.deleteDog} value={dog._id}>
+                        Delete This Dog
+                      </button>
                     </li>
                   ))}
                 </ul>
