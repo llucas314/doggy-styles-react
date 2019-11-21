@@ -14,16 +14,24 @@ export default class App extends Component {
     super();
 
     this.state = {
-      breeds: [{}],
+      breeds: [],
       isLoaded: false,
-      baseUrl: "https://doggystyle-api.herokuapp.com"
+      baseUrl: "https://doggystyle-api.herokuapp.com",
+      breedsIds: []
     };
   }
 
   componentDidMount() {
     axios
       .get(`${this.state.baseUrl}/breeds`)
-      .then(res => this.setState({ breeds: res.data, isLoaded: true }))
+      .then(res =>
+        this.setState({
+          breeds: res.data,
+          isLoaded: true,
+          breedsIds: res.data.map(breed => breed.id)
+        })
+      )
+
       .catch(err => console.log(err));
   }
   render() {

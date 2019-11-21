@@ -13,7 +13,7 @@ export default class Search extends Component {
 
     this.state = {
       isLoaded: false,
-      breeds: [],
+      breeds: this.props.breedsIds,
       value: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
