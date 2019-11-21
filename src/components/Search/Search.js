@@ -24,7 +24,6 @@ export default class Search extends Component {
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
-
   componentDidMount() {
     axios
       .get("https://doggystyle-api.herokuapp.com/breeds")

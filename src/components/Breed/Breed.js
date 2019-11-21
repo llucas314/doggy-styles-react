@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./Breed.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import goodDog from '../../images/good_dog.png';
+import "./Breed.css";
 
 export default class Breed extends Component {
   constructor(props) {
@@ -30,7 +31,6 @@ export default class Breed extends Component {
       }
     });
   }
-
   render() {
     return (
       <div className="breed-page">
@@ -38,7 +38,7 @@ export default class Breed extends Component {
         <Breadcrumbs links={["Search", "Breeds"]} />
         <main>
           <h1>{this.state.breeds.name}</h1>
-          <img src={this.state.dogBreed.url} alt={this.state.breeds.name} />
+          <img src={this.state.dogBreed ? this.state.dogBreed.url : goodDog} alt={this.state.breeds.name} />
           <h3>Temperament: {this.state.breeds.temperament}</h3>
           <div className="link-wrap">
             <Link to="/search" className="breed-link">
