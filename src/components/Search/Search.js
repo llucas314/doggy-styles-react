@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import Dog from "../../storybook/Dog/Dog";
 import "./Search.css";

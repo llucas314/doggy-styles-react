@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
+import axios from "axios";
 import { Redirect } from "react-router";
 import Header from "../Header/Header";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
@@ -15,7 +16,8 @@ export default class Login extends Component {
       password: "",
       hidden: true,
       submitted: false,
-      message: ""
+      message: "",
+      response: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,11 +25,25 @@ export default class Login extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({ message: "Try Again" });
-    this.setState({ submitted: true });
+
+    axios
+      .get(
+        `${this.props.baseUrl}/users/${this.state.username}/${this.state.password}`
+      )
+      .then(res => {
+        const result = res.data;
+        if (res.data.length === 0) {
+          this.setState({ message: "Try Again" });
+        } else {
+          this.setState({ submitted: true });
+        }
+      });
+
+    // this.setState({ submitted: true });
   };
   handleChange = e => {
     // console.dir(e.target);
+    this.setState({ message: "" });
     this.setState({ [e.target.name]: e.target.value });
   };
   toggleShow = e => {
