@@ -17,9 +17,33 @@ export default class App extends Component {
       breeds: [],
       isLoaded: false,
       baseUrl: "https://doggystyle-api.herokuapp.com",
-      breedsIds: []
+      breedsIds: [],
+      username: "",
+      password: "",
+      message: ""
     };
+    this.loginChange = this.loginChange.bind(this);
+    this.loginSubmit = this.loginSubmit.bind(this);
   }
+  loginSubmit = e => {
+    e.preventDefault();
+
+    axios
+      .get(
+        `${this.state.baseUrl}/users/${this.state.username}/${this.state.password}`
+      )
+      .then(res => {
+        if (res.data.length === 0) {
+          this.setState({ message: "Try Again" });
+        } else {
+          this.setState({ submitted: true });
+        }
+      });
+  };
+  loginChange = e => {
+    this.setState({ message: "" });
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   componentDidMount() {
     axios
@@ -55,7 +79,14 @@ export default class App extends Component {
         ></Route>
         <Route
           path="/signup"
-          render={props => <SignUp {...props} {...this.state} />}
+          render={props => (
+            <SignUp
+              {...props}
+              {...this.state}
+              loginChange={this.loginChange}
+              loginSubmit={this.loginSubmit}
+            />
+          )}
         ></Route>
         <Route
           path="/about"
@@ -63,7 +94,14 @@ export default class App extends Component {
         ></Route>
         <Route
           path="/login"
-          render={props => <Login {...props} {...this.state} />}
+          render={props => (
+            <Login
+              {...props}
+              {...this.state}
+              loginChange={this.loginChange}
+              loginSubmit={this.loginSubmit}
+            />
+          )}
         ></Route>
       </Switch>
     );
