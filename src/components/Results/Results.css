@@ -1,6 +1,11 @@
 .results {
   height: 100vh;
-  background-color: #edf5e1;
+  background-image: url("../../images/camilo-fierro-z7rcwqCi77s-unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+  background-color: #0c0c0c33;
+  background-blend-mode: multiply;
+  color: #edf5e1;
 }
 
 .results main {
@@ -38,6 +43,10 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.results main .breeds a {
+  color: #edf5e1;
 }
 
 .results main .breeds .breed {
