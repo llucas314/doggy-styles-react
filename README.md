@@ -1,69 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # doggy-styles-react
+
+This website allows you to find dogs with compatible temperaments(doggy styles). The idea for this project was inspired by my German Shorthaired Pointer, Preston, who I have trouble finding other dog breeds that match his intensity.
+
+[Check out the Doggy Styles site here! <<<](https://practical-roentgen-4bb960.netlify.com/)
+
+### Screenshots
+
+![homepage](./src/images/homepage.png)
+
+### Built With
+
+###### Front-End
+
+- Javascript/React.JS
+- CSS/SCSS
+- Bootstrap
+
+###### Back-End
+
+[Back-End Repository <<<](https://github.com/LLwassim/doggystyle-back-end)
+
+- Javascript/Express.JS
+- MongoDB/Mongoose
+
+###### Deployment
+
+- Netlify
+- Heroku
+- MongoDB Atlas
+
+### Installation
+
+To run this application locally, you can also fork and clone this repository.
+
+To install dependencies, navigate to the source directory:
+
+```
+npm install --save
+```
+
+Start up the React application:
+
+```
+npm start
+```
+
+### Dependencies
+
+A rundown of some dependencies used in this project:
+
+- `react-router`: React Router was implemented so that I could render a “detailed view” for movies. With a larger scale project, it would be more useful in rendering additional views.
+- `axios`: Promise based HTTP client for the browser and node.js
+- `doggystyle-complib`: A component library specifically made for this site
+
+### Contributing
+
+If you have any comments or suggestions please feel free to contact me through github.
+
+### Future Additions
+
+There are lots of features that we would like to add including building a React Native version, Facebook authentication, finding other users by location, improving the breed comparison algorithm, expanding on site content, and improving the overall styling.
+
+### Final Thoughts
+
+This was a great introduction to building an original full stack application as a team. We were able to overcome issues with work flow, merging branches, and persistent bugs. The couple of days allotted to build this application seems to pass quickly, but we were able to create and execute an effective plan of attack.
+
+### Credit
+
+- Pictures from [Unsplash.com](https://unsplash.com/)
+
+### Authors
+
+- Lorenzo Lucas
+- Blake Hearn
