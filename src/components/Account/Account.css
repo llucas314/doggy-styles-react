@@ -1,6 +1,10 @@
 .account {
   height: 100vh;
-  background-color: #edf5e1;
+  background-image: url("../../images/adam-griffith-sWkkIiTJMYc-unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+  background-color: #0c0c0c7e;
+  background-blend-mode: multiply;
   color: #05386b;
 }
 
@@ -20,6 +24,23 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #edf5e1;
+}
+
+.account main .text-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .account main button {
@@ -52,10 +73,51 @@
 
 .account main form input {
   border-radius: 2px;
+  width: 100%;
+}
+
+.account main form select {
+  border-radius: 2px;
+  width: 100%;
 }
 
 .account main form button {
   border-radius: 2px;
+}
+
+.account main form .submit {
+  border-radius: 10px;
+  background-color: #05386b;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  color: #edf5e1;
+}
+
+.account main form .submit:hover {
+  background-color: #379683;
+}
+
+.account main .inner-modal {
+  width: 100vw;
+  height: 90vh;
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  background-color: #379683c7;
+  color: #edf5e1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .account main .delete-modal {

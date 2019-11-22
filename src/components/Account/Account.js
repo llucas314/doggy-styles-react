@@ -227,46 +227,58 @@ export default class Account extends Component {
                 </ul>
                 <button onClick={this.toggleDogs}>Add</button>
                 <p>{this.state.dogMessage}</p>
-                {this.state.dogsInput ? (
-                  <form onSubmit={this.updateDog}>
-                    <input
-                      type="text"
-                      name="petName"
-                      placeholder="Dog's Name"
-                      onChange={this.handleChange}
-                    />{" "}
-                    <input
-                      type="text"
-                      name="age"
-                      placeholder="Dog's Age"
-                      onChange={this.handleChange}
-                    />{" "}
-                    <select name="energy_level" onChange={this.handleEnergy}>
-                      <option>Choose your dog's energy level</option>
-                      {this.state.energy_levels.map(energy_level => (
-                        <option
-                          key={energy_level.level}
-                          value={energy_level.level}
+                <div className="dog-modal">
+                  {this.state.dogsInput ? (
+                    <div className="inner-modal">
+                      <form onSubmit={this.updateDog}>
+                        <input
+                          type="text"
+                          name="petName"
+                          placeholder="Dog's Name"
+                          onChange={this.handleChange}
+                        />{" "}
+                        <input
+                          type="text"
+                          name="age"
+                          placeholder="Dog's Age"
+                          onChange={this.handleChange}
+                        />{" "}
+                        <select
+                          name="energy_level"
+                          onChange={this.handleEnergy}
                         >
-                          {energy_level.description} ({energy_level.level})
-                        </option>
-                      ))}
-                    </select>
-                    <select name="breedValue" onChange={this.handleDog}>
-                      <option>Choose a breed</option>
-                      {this.props.breeds.map(breed => {
-                        return (
-                          <option key={breed._id} value={breed.name}>
-                            {breed.name}
-                          </option>
-                        );
-                      })}
-                    </select>
-                    <input type="submit" value="Add Dog" />
-                  </form>
-                ) : (
-                  ""
-                )}
+                          <option>Choose your dog's energy level</option>
+                          {this.state.energy_levels.map(energy_level => (
+                            <option
+                              key={energy_level.level}
+                              value={energy_level.level}
+                            >
+                              {energy_level.description} ({energy_level.level})
+                            </option>
+                          ))}
+                        </select>
+                        <select name="breedValue" onChange={this.handleDog}>
+                          <option>Choose a breed</option>
+                          {this.props.breeds.map(breed => {
+                            return (
+                              <option key={breed._id} value={breed.name}>
+                                {breed.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                        <input
+                          className="submit"
+                          type="submit"
+                          value="Add Dog"
+                        />
+                      </form>
+                      <button onClick={this.toggleDogs}>Cancel</button>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
                 <h4>
                   {this.state.pwChanged
                     ? "Password Updated"
