@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../Header/Header";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import Dog from "../../storybook/Dog/Dog";
 import "./Search.css";
@@ -25,18 +25,13 @@ export default class Search extends Component {
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
-
-  componentDidMount() {
-    // axios
-    //   .get("https://doggystyle-api.herokuapp.com/breeds")
-    //   .then(res => this.setState({ breeds: res.data }))
-    //   .then(this.setState({ isLoaded: true }))
-    //   .catch(err => console.log(err));
-  }
   render() {
+    if (this.props.loggedIn === false) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="search">
-        <Header login={true} />
+        <Header login={true} logOut={this.props.logOut} />
         <Breadcrumbs links={["Search"]} />
 
         <main>

@@ -196,14 +196,16 @@ export default class Account extends Component {
     if (this.state.isLoaded) {
       return (
         <div className="account">
-          <Header login={true} />
+          <Header
+            login={true}
+            name={this.props.firstName}
+            logOut={this.props.logOut}
+          />
           {this.state.isLoaded ? (
             <main>
               <div className="text-wrap">
-                <h1>Hello, {this.state.user.firstName}</h1>
-                <h2>Would you like to update your account?</h2>
                 {/* list of dogs */}
-                <h4>Dogs</h4>
+                <h4>Add a Dog</h4>
                 <ul className="dog-list">
                   {this.state.dogs.map((dog, i) => (
                     <li key={dog._id} className="dog">
@@ -222,7 +224,7 @@ export default class Account extends Component {
                     </li>
                   ))}
                 </ul>
-                <button onClick={this.toggleDogs}>Add A Dog</button>
+                <button onClick={this.toggleDogs}>Add</button>
                 <p>{this.state.dogMessage}</p>
                 {this.state.dogsInput ? (
                   <form onSubmit={this.updateDog}>
@@ -270,23 +272,19 @@ export default class Account extends Component {
                     : `Change password ${this.state.message}`}
                 </h4>
                 <form onSubmit={this.updatePassword}>
-                  <label>
-                    Password:
-                    <input
-                      type={this.state.hidden ? "password" : "text"}
-                      name="password"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <label>
-                    Confirm Password:
-                    <input
-                      type={this.state.hidden ? "password" : "text"}
-                      name="confirm"
-                      onChange={this.handleChange}
-                    />
-                    <button onClick={this.toggleShow}>Show / Hide</button>
-                  </label>
+                  <input
+                    type={this.state.hidden ? "password" : "text"}
+                    name="password"
+                    placeholder="Password"
+                    onChange={this.handleChange}
+                  />
+                  <input
+                    type={this.state.hidden ? "password" : "text"}
+                    name="confirm"
+                    placeholder="Confirm Password"
+                    onChange={this.handleChange}
+                  />
+                  <button onClick={this.toggleShow}>Show / Hide</button>
                   <input type="submit" value="Submit" />
                 </form>
                 <h4>Delete Account</h4>

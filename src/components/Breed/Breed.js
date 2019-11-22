@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Breed.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Header from "../Header/Header";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import BreedProfile from "../Breed_Profile/BreedProfile";
@@ -37,25 +37,32 @@ export default class Breed extends Component {
   }
 
   render() {
+    if (this.props.loggedIn === false) {
+      return <Redirect to="/" />;
+    }
     const currentBreed = this.props.breeds.filter(
       breed => breed.name === this.props.match.params.id
     );
 
     console.log(currentBreed);
-    let tempProps = '';
+    let tempProps = "";
     for (let i = 0; i < currentBreed[0].temperament.length; i++) {
       if (i === currentBreed[0].temperament.length - 1) {
         tempProps += currentBreed[0].temperament[i];
       } else {
-        tempProps += currentBreed[0].temperament[i] + ', ';
+        tempProps += currentBreed[0].temperament[i] + ", ";
       }
     }
     return (
       <div className="breed-page">
-        <Header login={true} />
+        <Header login={true} logOut={this.props.logOut} />
         <Breadcrumbs links={["Search", "Breeds"]} />
         <main>
-          <BreedProfile {...currentBreed[0]} url={this.state.dogBreed.url} t={tempProps} />
+          <BreedProfile
+            {...currentBreed[0]}
+            url={this.state.dogBreed.url}
+            t={tempProps}
+          />
           <div className="link-wrap">
             <Link to="/search" className="breed-link">
               Back to Search
@@ -63,7 +70,7 @@ export default class Breed extends Component {
             |{" "}
             <Link
               to={`/search/results/${currentBreed[0].name}`}
-              className="breed-link" 
+              className="breed-link"
             >
               {" "}
               See Dogs With Similar Styles

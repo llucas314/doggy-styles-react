@@ -21,12 +21,23 @@ export default class App extends Component {
       username: "",
       password: "",
       message: "",
-      loggedIn: false
+      loggedIn: false,
+      firstName: null,
+      logOut: this.logOut
     };
     this.loginChange = this.loginChange.bind(this);
     this.loginSubmit = this.loginSubmit.bind(this);
     this.setLoggedIn = this.setLoggedIn.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
+  logOut = e => {
+    this.setState({
+      loggedIn: false,
+      username: "",
+      password: "",
+      firstName: null
+    });
+  };
   loginSubmit = e => {
     e.preventDefault();
 
@@ -35,11 +46,11 @@ export default class App extends Component {
         `${this.state.baseUrl}/users/${this.state.username}/${this.state.password}`
       )
       .then(res => {
+        console.log(res.data[0]);
         if (res.data.length === 0) {
-          this.setState({ message: "Try Again" });
-          this.setState({ loggedIn: false });
+          this.setState({ message: "Try Again", loggedIn: false });
         } else {
-          this.setState({ loggedIn: true });
+          this.setState({ loggedIn: true, firstName: res.data[0].firstName });
         }
       });
   };
@@ -80,7 +91,7 @@ export default class App extends Component {
         ></Route>
         <Route
           path="/breeds/:id"
-          render={props => <Breed {...props} breeds={this.state.breeds} />}
+          render={props => <Breed {...props} {...this.state} />}
         ></Route>
         <Route
           path="/signup"
