@@ -7,13 +7,13 @@ function Navigation(props) {
     <nav className="navigation">
       {props.login ? (
         <ul>
-          <Link className="nav-li" to="/">
-            Home
+          <Link className="nav-li" to="/account">
+            {props.name ? "Welcome, " + props.name : "My Account"}
           </Link>
           <Link className="nav-li" to="/search">
             Search
           </Link>
-          <Link className="nav-li" to="/">
+          <Link className="nav-li" to="/" onClick={props.logOut}>
             Logout
           </Link>
         </ul>
@@ -23,7 +23,7 @@ function Navigation(props) {
             Sign Up
           </Link>
 
-          <Link className="nav-li" to="/search">
+          <Link className="nav-li" to="/login">
             Login
           </Link>
         </ul>

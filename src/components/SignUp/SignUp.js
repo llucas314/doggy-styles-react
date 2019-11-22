@@ -26,26 +26,27 @@ export default class SignUp extends Component {
     this.toggleShow = this.toggleShow.bind(this);
   }
   handleChange = e => {
-    console.dir(e.target);
+    // console.dir(e.target);
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const url = " https://doggystyle-api.herokuapp.com/users/create";
-    if (this.state.password === this.state.confirm) {
+    if (this.props.password === this.state.confirm) {
       axios
         .post(url, {
           email: this.state.email,
-          username: this.state.username,
-          password: this.state.password,
+          username: this.props.username,
+          password: this.props.password,
           firstName: this.state.firstName,
           lastName: this.state.lastName
         })
         .then(res => {
           console.log(res);
         })
-        .then(this.setState({ submitted: true }))
+        .then(this.props.setLoggedIn)
+
         .catch(err => console.log(err));
     } else {
       this.setState({ message: "Passwords do not match" });
@@ -56,11 +57,11 @@ export default class SignUp extends Component {
     this.setState({ hidden: !this.state.hidden });
   };
   render() {
-    if (this.state.submitted) {
+    if (this.props.loggedIn) {
       return (
         <Redirect
           to={{
-            pathname: "/about",
+            pathname: "/account",
 
             state: {
               username: this.state.username,
@@ -97,14 +98,14 @@ export default class SignUp extends Component {
             <TextInput
               name={"username"}
               placeholder={"Username"}
-              onChange={this.handleChange}
+              onChange={this.props.loginChange}
             />
 
             <input
               type={this.state.hidden ? "password" : "text"}
               name="password"
               placeholder="Password"
-              onChange={this.handleChange}
+              onChange={this.props.loginChange}
             />
             <input
               type={this.state.hidden ? "password" : "text"}
