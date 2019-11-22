@@ -55,13 +55,13 @@ export default class Account extends Component {
     } else this.setState({ [e.target.name]: e.target.value });
   };
   handleDog = e => {
-    for (let i = 0; i < this.state.breeds.length; i++) {
+    for (let i = 0; i < this.props.breeds.length; i++) {
       console.log(e.target.value);
-      if (this.state.breeds[i].name === e.target.value) {
+      if (this.props.breeds[i].name === e.target.value) {
         let specificBreed = this.state.breedValue[0];
         console.log(specificBreed);
         specificBreed.name = e.target.value;
-        specificBreed.temperament = this.state.breeds[i].temperament;
+        specificBreed.temperament = this.props.breeds[i].temperament;
         this.setState({
           breedValue: [specificBreed]
         });
@@ -83,7 +83,7 @@ export default class Account extends Component {
   };
   updatePassword = e => {
     e.preventDefault();
-    const url = `https://doggystyle-api.herokuapp.com/users/update/${this.state.user._id}`;
+    const url = `${this.props.baseUrl}/users/update/${this.state.user._id}`;
     if (this.state.password === this.state.confirm) {
       axios
         .put(url, {
@@ -105,7 +105,7 @@ export default class Account extends Component {
   };
   updateDog = e => {
     e.preventDefault();
-    const url = `https://doggystyle-api.herokuapp.com/users/${this.state.user._id}/dogs/create`;
+    const url = `${this.props.baseUrl}/users/${this.state.user._id}/dogs/create`;
 
     axios
       .post(url, {
@@ -128,7 +128,7 @@ export default class Account extends Component {
     console.log(e.target.value);
     axios
       .delete(
-        `https://doggystyle-api.herokuapp.com/users/${this.state.user._id}/dogs/delete/${e.target.value}`
+        `${this.props.baseUrl}/users/${this.state.user._id}/dogs/delete/${e.target.value}`
       )
       .then(res => {
         console.log(res);
@@ -152,9 +152,7 @@ export default class Account extends Component {
   handleDelete = e => {
     e.preventDefault();
     axios
-      .delete(
-        `https://doggystyle-api.herokuapp.com/users/delete/${this.state.user._id}`
-      )
+      .delete(`${this.props.baseUrl}/users/delete/${this.state.user._id}`)
       .then(res => {
         console.log(res);
         this.setState({ deleted: true });
