@@ -35,8 +35,8 @@ export default class Search extends Component {
         <Breadcrumbs links={["Search"]} />
 
         <main>
-          <h1>Find your dog's breed</h1>
           <form onSubmit={this.handleSubmit}>
+            <h1>Search for a breed</h1>
             <Select
               default={this.state.value}
               handleChange={this.handleChange}
@@ -57,6 +57,7 @@ export default class Search extends Component {
               </Link>
             )}
           </form>
+          <div className="img-wrap"></div>
         </main>
       </div>
     );
