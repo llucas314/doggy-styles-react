@@ -1,6 +1,7 @@
 .account {
   height: 100vh;
   background-color: #edf5e1;
+  color: #05386b;
 }
 
 .account main {
@@ -19,6 +20,18 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.account main button {
+  border-radius: 10px;
+  background-color: #05386b;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  color: #edf5e1;
+}
+
+.account main button:hover {
+  background-color: #379683;
 }
 
 .account main form {

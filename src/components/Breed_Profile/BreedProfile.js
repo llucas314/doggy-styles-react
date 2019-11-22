@@ -3,11 +3,13 @@ import "./BreedProfile.css";
 
 export default function BreedProfile(props) {
   return (
-    <>
-      <h1>{props.name}</h1>
-      <img src={props.url} alt={props.name} />
+    <div className="breed-profile">
+      <div className="img-wrap">
+        <h1 className="dog-name">{props.name}</h1>
+        <img src={props.url} alt={props.name} />
+      </div>
 
       {`Temperament: ${props.t}`}
-    </>
+    </div>
   );
 }

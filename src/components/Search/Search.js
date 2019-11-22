@@ -37,25 +37,27 @@ export default class Search extends Component {
         <main>
           <form onSubmit={this.handleSubmit}>
             <h1>Search for a breed</h1>
-            <Select
-              default={this.state.value}
-              handleChange={this.handleChange}
-              array={this.props.breeds}
-              selectOptions={"Choose a Breed"}
-            />
-            {this.state.value === "" ? (
-              <Link to={`/search`}>
-                <Dog />
-              </Link>
-            ) : (
-              <Link
-                to={{
-                  pathname: `/breeds/${this.state.value}`
-                }}
-              >
-                <Dog />
-              </Link>
-            )}
+            <div className="search-select">
+              <Select
+                default={this.state.value}
+                handleChange={this.handleChange}
+                array={this.props.breeds}
+                selectOptions={"Choose a Breed"}
+              />
+              {this.state.value === "" ? (
+                <Link to={`/search`}>
+                  <Dog />
+                </Link>
+              ) : (
+                <Link
+                  to={{
+                    pathname: `/breeds/${this.state.value}`
+                  }}
+                >
+                  <Dog />
+                </Link>
+              )}
+            </div>
           </form>
           <div className="img-wrap"></div>
         </main>
