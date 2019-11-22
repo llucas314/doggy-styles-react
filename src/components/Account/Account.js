@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import axios from "axios";
 import "./Account.css";
 import Header from "../Header/Header";
+import Modal from "../Modal/Modal";
 
 export default class Account extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ export default class Account extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
     this.toggleShow = this.toggleShow.bind(this);
-    this.modalDelete = this.modalDelete.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleDogs = this.toggleDogs.bind(this);
     this.handleDog = this.handleDog.bind(this);
@@ -145,9 +146,9 @@ export default class Account extends Component {
     this.setState({ dogsInput: !this.state.dogsInput });
   };
 
-  modalDelete = e => {
+  toggleModal = e => {
     e.preventDefault();
-    this.setState({ modal: true });
+    this.setState({ modal: !this.state.modal });
   };
   handleDelete = e => {
     e.preventDefault();
@@ -288,22 +289,12 @@ export default class Account extends Component {
                   <input type="submit" value="Submit" />
                 </form>
                 <h4>Delete Account</h4>
-                <button onClick={this.modalDelete}>Delete</button>
-                {this.state.modal ? (
-                  <div className="delete-modal">
-                    <div className="modal-wrap">
-                      <h3>Are You Sure?</h3>
-                      <div className="modal-button">
-                        <button onClick={this.handleDelete}>Yes</button>
-                        <button onClick={() => this.setState({ modal: false })}>
-                          NO
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
+                <button onClick={this.toggleModal}>Delete</button>
+                <Modal
+                  modal={this.state.modal}
+                  handleDelete={this.handleDelete}
+                  toggleModal={this.toggleModal}
+                />
               </div>
             </main>
           ) : (
