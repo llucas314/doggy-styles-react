@@ -45,7 +45,7 @@ export default class SignUp extends Component {
         .then(res => {
           console.log(res);
         })
-        .then(this.setState({ submitted: true }))
+        .then(this.props.setLoggedIn)
 
         .catch(err => console.log(err));
     } else {
@@ -57,7 +57,7 @@ export default class SignUp extends Component {
     this.setState({ hidden: !this.state.hidden });
   };
   render() {
-    if (this.state.submitted) {
+    if (this.props.loggedIn) {
       return (
         <Redirect
           to={{

@@ -25,6 +25,7 @@ export default class App extends Component {
     };
     this.loginChange = this.loginChange.bind(this);
     this.loginSubmit = this.loginSubmit.bind(this);
+    this.setLoggedIn = this.setLoggedIn.bind(this);
   }
   loginSubmit = e => {
     e.preventDefault();
@@ -46,7 +47,9 @@ export default class App extends Component {
     this.setState({ message: "" });
     this.setState({ [e.target.name]: e.target.value });
   };
-
+  setLoggedIn = () => {
+    this.setState({ loggedIn: true });
+  };
   componentDidMount() {
     axios
       .get(`${this.state.baseUrl}/breeds`)
@@ -87,6 +90,7 @@ export default class App extends Component {
               {...this.state}
               loginChange={this.loginChange}
               loginSubmit={this.loginSubmit}
+              setLoggedIn={this.setLoggedIn}
             />
           )}
         ></Route>

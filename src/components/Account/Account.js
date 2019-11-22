@@ -116,6 +116,7 @@ export default class Account extends Component {
       })
       .then(res => {
         console.log(res);
+        this.getUserInfo();
       })
       .catch(err => console.log(err));
 
@@ -131,6 +132,7 @@ export default class Account extends Component {
       )
       .then(res => {
         console.log(res);
+        this.getUserInfo();
       })
       .catch(err => console.log(err));
   };
@@ -159,22 +161,31 @@ export default class Account extends Component {
       })
       .catch(err => console.log(err));
   };
-
-  componentDidMount() {
-    axios
-      .get(
-        `${this.props.baseUrl}/users/${this.props.username}/${this.props.password}`
-      )
-      .then(res => {
-        const userJson = { ...res.data[0] };
-        this.setState({
-          user: userJson,
-          dogs: res.data[0].dogs,
-          isLoaded: true
+  getUserInfo = () => {
+    if (this.props.username === "") {
+      this.setState({ deleted: true });
+    } else {
+      axios
+        .get(
+          `${this.props.baseUrl}/users/${this.props.username}/${this.props.password}`
+        )
+        .then(res => {
+          const userJson = { ...res.data[0] };
+          console.log("res.data[0]", res.data[0]);
+          this.setState({
+            user: userJson,
+            dogs: res.data[0].dogs,
+            isLoaded: true
+          });
+          console.log("component did mount");
+        })
+        .catch(err => {
+          console.log(err);
         });
-        console.log("component did mount");
-      })
-      .catch(err => console.log(err));
+    }
+  };
+  componentDidMount() {
+    this.getUserInfo();
   }
 
   render() {
@@ -242,7 +253,7 @@ export default class Account extends Component {
                     </select>
                     <select name="breedValue" onChange={this.handleDog}>
                       <option>Choose a breed</option>
-                      {this.state.breeds.map(breed => {
+                      {this.props.breeds.map(breed => {
                         return (
                           <option key={breed._id} value={breed.name}>
                             {breed.name}
