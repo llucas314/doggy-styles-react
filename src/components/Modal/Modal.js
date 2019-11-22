@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Modal(props) {
   return (
-    <div>
+    <>
       {props.modal ? (
         <div className="delete-modal">
           <div className="modal-wrap">
@@ -16,6 +16,6 @@ export default function Modal(props) {
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }
