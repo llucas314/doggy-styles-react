@@ -1,10 +1,11 @@
 .breed-page {
   height: 100vh;
+  background-color: #edf5e1;
 }
 
 .breed-page main {
+  border-top: 5px solid #05386b;
   height: 85vh;
-  background-color: #edf5e1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,22 +13,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   color: #05386b;
-}
-
-.breed-page main img {
-  width: 20vw;
-  height: 20vw;
-  -o-object-position: center;
-     object-position: center;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 100em;
 }
 
 .breed-page main h3 {

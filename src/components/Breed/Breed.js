@@ -50,7 +50,7 @@ export default class Breed extends Component {
       if (i === currentBreed[0].temperament.length - 1) {
         tempProps += currentBreed[0].temperament[i];
       } else {
-        tempProps += currentBreed[0].temperament[i] + ", ";
+        tempProps += currentBreed[0].temperament[i] + " | ";
       }
     }
     return (

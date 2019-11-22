@@ -1,6 +1,10 @@
 .sign-up {
   height: 100vh;
-  background-color: #edf5e1;
+  background-image: url("../../images/adam-griffith-sWkkIiTJMYc-unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+  background-color: #0c0c0c7e;
+  background-blend-mode: multiply;
 }
 
 .sign-up main {
@@ -13,12 +17,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #edf5e1;
 }
 
 .sign-up main .text-wrap {

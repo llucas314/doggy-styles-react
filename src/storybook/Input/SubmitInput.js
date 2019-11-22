@@ -1,8 +1,8 @@
-import React from 'react';
-import './SubmitInput.css';
+import React from "react";
+import "./SubmitInput.css";
 
 const SubmitInput = () => (
-   <input type="submit" value="Submit" />
+  <input className="submit-btn" type="submit" value="Submit" />
 );
 
 export default SubmitInput;

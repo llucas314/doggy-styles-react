@@ -9,16 +9,19 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
+  color: #05386b;
+}
+
+.login main .img-wrap {
+  height: 85vh;
+  width: 60vw;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#edf5e1)), center/cover no-repeat url("../../images/robert-koorenny-rhH4DnfBwJo-unsplash.jpg");
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #edf5e1), center/cover no-repeat url("../../images/robert-koorenny-rhH4DnfBwJo-unsplash.jpg");
+  background-position: center;
 }
 
 .login main form {
@@ -37,11 +40,29 @@
           align-items: center;
 }
 
-.login main form input {
+.login main form .input-text {
   border-radius: 2px;
+  border: none;
+  border-bottom: 2px solid #379683;
+  background: transparent;
 }
 
 .login main form button {
   border-radius: 2px;
+}
+
+.login main form .submit-btn {
+  background: #05386b;
+  color: #edf5e1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.login main form .submit-btn:hover {
+  background: #379683;
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
 }
 /*# sourceMappingURL=Login.css.map */
