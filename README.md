@@ -2,7 +2,7 @@
 
 This website allows you to find dogs with compatible temperaments(doggy styles). The idea for this project was inspired by my German Shorthaired Pointer, Preston, who I have trouble finding other dog breeds that match his intensity.
 
-[Check out the Doggy Styles site here! <<<](https://practical-roentgen-4bb960.netlify.com/)
+[Check out the Doggy Styles site here! <<<](https://doggystyles.netlify.com/)
 
 ### Screenshots
 
